@@ -5,7 +5,16 @@
 if exists('*bufwinid')
   function! s:GotoSourceWindow() abort
     let bufid = g:vista.source.bufnr
-    let winid = bufwinid(bufid)
+    let winids = win_findbuf(g:vista.source.bufnr)
+
+    " Use previous window if var exists or fallback to bufsinid() to get first
+    " window with buffer
+    if exists('g:vista.prev_win_id') && index(winids, g:vista.prev_win_id) >= 0
+      let winid = g:vista.prev_win_id
+    else
+      let winid = bufwinid(bufid)
+    endif
+
     if winid != -1
       if win_getid() != winid
         " No use noautocmd here. Ref #362

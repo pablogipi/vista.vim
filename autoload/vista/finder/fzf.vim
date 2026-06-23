@@ -83,6 +83,11 @@ function! vista#finder#fzf#sink(line, ...) abort
   let col = stridx(g:vista.source.line(lnum), tag)
   let col = col == -1 ? 1 : col + 1
   if a:0 > 0
+
+    echomsg "Parameters for vista sink:"
+    echomsg a:0
+    echomsg a:1
+
     if win_getid() != a:1
       noautocmd call win_gotoid(a:1)
     endif

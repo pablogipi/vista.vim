@@ -225,6 +225,8 @@ function! vista#finder#RunFZFOrSkim(apply_run) abort
 endfunction
 
 function! vista#finder#Dispatch(bang, finder, executive) abort
+  " This is the entry point for finder. Save currenbt window
+  let g:vista.prev_win_id = win_getid()
   let finder = empty(a:finder) ? 'fzf' : a:finder
   if empty(a:executive)
     let executive = vista#GetExplicitExecutiveOrDefault()
