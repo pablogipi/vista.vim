@@ -535,6 +535,16 @@ g:vista_enable_centering_jump                      *g:vista_enable_centering_jum
   Set this variable to `0` to not make the line at center of window when you
   jump to the tag.
 
+g:vista_fzf_jump_to_last_used_win              *g:vista_fzf_jump_to_last_used_win*
+
+  Type: |Number|
+  Default: `0`
+
+  Whether or not FZF jumps to latest used window for buffer, or first window
+  for buffer. This is useful when using severeail windows for the same buffers.
+  The default is to always jump to first window for the buffer.
+
+
 --------------------------------------------------------------------------------
 Key Mappings                                                  *vista-key-mappings*
 

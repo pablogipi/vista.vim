@@ -7,9 +7,9 @@ if exists('*bufwinid')
     let bufid = g:vista.source.bufnr
     let winids = win_findbuf(g:vista.source.bufnr)
 
-    " Use previous window if var exists or fallback to bufsinid() to get first
-    " window with buffer
-    if exists('g:vista.prev_win_id') && index(winids, g:vista.prev_win_id) >= 0
+    " Use previous window if var exists or fallback to bufwinid() to get first window with buffer
+    " Enable this behaviour with g:vista_fzf_jump_to_last_used_win
+    if (exists('g:vista_fzf_jump_to_last_used_win') && g:vista_fzf_jump_to_last_used_win == 1)  && (exists('g:vista.prev_win_id') && index(winids, g:vista.prev_win_id) >= 0)
       let winid = g:vista.prev_win_id
     else
       let winid = bufwinid(bufid)
